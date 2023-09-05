@@ -16,10 +16,7 @@ class FileShare {
         rtcConfig: {
           iceServers: [
             {
-              urls: 'stun:stun.l.google.com:19305',
-            },
-            {
-              urls: 'stun:stun1.l.google.com:19305',
+              urls: 'stun:stun.knopoff.dev',
             },
           ]
         }
@@ -126,7 +123,7 @@ class FileShare {
     }];
 
     onMeta(meta);
-    
+
     this.socket.send(constants.FILE_INIT, {
       sender: this.socket.name,
       size: file.size,
@@ -160,11 +157,11 @@ class FileShare {
       this.socket.listen(constants.FILE_STATUS, ({ peer, progress }) => {
         if (progress !== transferStatus.progress) {
           transferStatus.progress = progress;
-          transferStatus.peers = [ peer ];
+          transferStatus.peers = [peer];
         } else {
           transferStatus.peers.push(peer);
         }
-        
+
         stream();
       });
 
@@ -174,7 +171,7 @@ class FileShare {
 
   async sendFiles({ numPeers, input, useTorrent, onMeta, onSocketProgress, onTorrentProgress, onDone }) {
     if (!input) return;
-    
+
     if (useTorrent) {
       const inputMap = {};
       let totalSize = 0;
@@ -216,7 +213,7 @@ class FileShare {
     else {
       input = Array.from(input);
 
-      for(const file of input) {
+      for (const file of input) {
         if (file.size > WS_SIZE_LIMIT) {
           throw new Error(constants.ERR_LARGE_FILE);
         }
