@@ -18,12 +18,12 @@ module.exports = function(config, env, helpers) {
       WS_HOST: JSON.stringify(
         process.env.WS_HOST !== undefined
           ? process.env.WS_HOST
-          : `ws://${ip.address()}:3030`
+          : `ws://${ip.address()}:8038`
       ),
       SERVER_HOST: JSON.stringify(
         process.env.SERVER_HOST !== undefined
           ? process.env.SERVER_HOST
-          : `http://${ip.address()}:3030`
+          : `http://${ip.address()}:8038`
       ),
       WS_SIZE_LIMIT: JSON.stringify(process.env.WS_SIZE_LIMIT || 1e8),
       TORRENT_SIZE_LIMIT: JSON.stringify(process.env.TORRENT_SIZE_LIMIT || 7e8),
