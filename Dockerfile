@@ -25,11 +25,7 @@ FROM node:16.19.0-alpine
 
 # Installing nginx and gettext alpine packages
 # gettext is for envsubst command
-RUN apk add --update nginx gettext
-RUN mkdir -p /run/nginx
-
-COPY ./nginx/image-nginx.template /etc/nginx/nginx.template
-COPY --from=base /app/client/build /etc/nginx/html
+RUN apk add --update gettext
 
 WORKDIR /app
 
@@ -48,4 +44,4 @@ COPY ./package*.json ../
 
 EXPOSE 3030
 
-CMD ["sh", "-c", "envsubst '$PORT' < /etc/nginx/nginx.template > /etc/nginx/nginx.conf && nginx -g 'daemon off;' & PORT=3030 npm run start"]
+CMD ["npm run start"]
