@@ -7,14 +7,14 @@ services:
     environment:
       TRUST_PROXY: 1
     ports:
-      - 3030:3030
+      - 8038:3030
 
   blaze-client:
     build:
       context: .
       dockerfile: ./client/Dockerfile
     ports:
-      - 80:80
+      - 8037:80
     depends_on:
       - blaze-server
     volumes:
