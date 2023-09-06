@@ -12,7 +12,7 @@ class FileShare {
     this.socket = socket;
     this.torrentClient = new WebTorrent({
       tracker: {
-        ...trackers,
+        announce: [],
         rtcConfig: {
           iceServers: [
             {
