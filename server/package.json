@@ -19,7 +19,7 @@
     "ws": "^7.5.9"
   },
   "engines": {
-    "node": "16.x"
+    "node": "18.x"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
